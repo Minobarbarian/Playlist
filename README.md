@@ -7,7 +7,7 @@ Projeto Base da dupla: Tobias Daniel Siqueira e Hosana Iasmin Castro dos Santos.
 Clone o projeto e acesse a pasta Playlist.
 
 ```bash
-git clone https://github.com/AOBarbosa/Playlist.git
+git clone https://github.com/Minobarbarian/Playlist.git
 
 cd Playlist
 
@@ -16,7 +16,7 @@ cd Playlist
 Para rodar o projeto, digite os seguintes comandos:
 
 ```bash
-cd build
+cmake .
 
 make
 
