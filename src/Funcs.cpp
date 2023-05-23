@@ -42,9 +42,13 @@ void manageMusics(Lista<Musica *> &musics)
             for (int i = 0; i < musics.tamanho; i++)
             {
                 if (musics.busca(i)->dado->getTitulo().compare(musicName) == 0)
-                {
+                {   
+                    //Musica *temp = musics.busca(i);
                     musics.remover(i);
-                    delete musics.busca(i);
+                    //delete musics.busca(i);
+                    //cout << musics.busca(i)->dado->getTitulo() << endl;
+                    
+                    //std::cout << "terminou!" << std::endl;
                 }
             }
 

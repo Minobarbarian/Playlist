@@ -3,6 +3,7 @@
 
 #include "Musica.h"
 #include "Lista.h"
+#include "Playlist.h"
 
 /**
  * @brief Entra na primeira opção do menu

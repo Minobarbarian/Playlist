@@ -99,6 +99,7 @@ public:
                 tamanho--;
             }
         }
+        //std::cout << "Terminou!" << std::endl;
     }
 };
 
