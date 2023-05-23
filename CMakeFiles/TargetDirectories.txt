@@ -1,3 +1,0 @@
-/home/joao.antonio.costa.119/Documentos/ex-nihilo-main/CMakeFiles/program.dir
-/home/joao.antonio.costa.119/Documentos/ex-nihilo-main/CMakeFiles/edit_cache.dir
-/home/joao.antonio.costa.119/Documentos/ex-nihilo-main/CMakeFiles/rebuild_cache.dir

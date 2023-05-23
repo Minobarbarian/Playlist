@@ -1,5 +1,5 @@
 # arquivo CMakeLists.txt
-cmake_minimum_required(VERSION 3.25.2) 
+cmake_minimum_required(VERSION 3.22.1) 
 project(Playlist VERSION 0.1 LANGUAGES CXX )
 # flags de compilação, vc pode colocar aqui # o addres sanitizer por exemplo 
 set ( CMAKE_CXX_FLAGS "-Wall" )
