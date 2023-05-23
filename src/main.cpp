@@ -1,16 +1,17 @@
 #include "Musica.h"
 #include "Playlist.h"
+#include "Funcs.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-Lista<Musica *> louvores;
-Lista<Playlist *> library;
+//Lista<Musica *> louvores;
+//Lista<Playlist *> library;
 
 // Funções pertencentes à opção Gerenciar Músicas
 
-void adicionar_musicas(string title, string author)
+/*void adicionar_musicas(string title, string author)
 {
     Musica *louvor = new Musica(title, author);
     louvores.inserir(louvor);
@@ -248,10 +249,32 @@ void editar_playlist()
     cout << "========================================" << endl;
     cout << "Escolha uma opção: ";
 }
-
+*/
 int main()
 {
-    int opcao = 0;
+    Lista<Musica *> musics;
+    Lista<Playlist *> playlists;
+
+    std::string option;
+    while (option != "0")
+    {
+        std::cout << "==========================-Menu-======================" << std::endl;
+        std::cout << "1) Manage musics;\n";
+        std::cout << "2) Manage playlists;\n";
+        std::cout << "0) Exit the program.\n";
+        std::cout << "======================================================" << std::endl;
+        std::cout << "Choose your next action: ";
+        std::getline(std::cin, option);
+
+        if (option == "1") { manageMusics(musics); }
+
+        if (option == "2") { managePlaylist(playlists); }
+  }
+
+  system("clear || cls");
+  
+
+    /*int opcao = 0;
     int subopcao = 0;
     int subopcao2 = 0;
     Node<Playlist *> *atual;
@@ -562,5 +585,5 @@ int main()
             cout << endl;
             break;
         }
-    }
+    }*/
 }
