@@ -13,6 +13,8 @@ cd Playlist
 
 ```
 
+Observação: Verifique se a versão do cmake da sua máquina condiz com o configurado no CMakeLists.txt
+
 Para rodar o projeto, digite os seguintes comandos:
 
 ```bash
