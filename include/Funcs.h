@@ -8,9 +8,9 @@
  * @brief Entra na primeira opção do menu
  * 
 */
-void manageMusics(Lista<Musica *> *musics);
+void manageMusics(Lista<Musica *> &musics);
 
-//void managePlaylist();
+void managePlaylist(Lista<Playlist *> &playlists);
 
 
 #endif // FUNCS_H
