@@ -9,6 +9,7 @@ include_directories( include )
 add_executable( program
   src/main.cpp
   src/Musica.cpp
-  src/Playlist.cpp)
+  src/Playlist.cpp
+  src/Funcs.cpp)
 # define C++14 standard
 set_property(TARGET program PROPERTY CXX_STANDARD 14)
