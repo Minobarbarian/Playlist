@@ -25,7 +25,7 @@ public:
 
     ~Lista()
     {
-        for (int i = 0; i < tamanho; i++){ remover(i); }
+        while(tamanho) { remover(0); }
     }
 
     void inserir(T valor)
@@ -63,43 +63,22 @@ public:
 
     void remover(int indice)
     {
-        Node<T> *p;
-
-        if (indice == 0 && cabeca->proximo == nullptr)
+        Node<T> *noAlvo = busca(indice);
+        if(indice == 0)
         {
-            p = cabeca;
-            delete p;
-            cabeca = cauda = nullptr;
-            tamanho = 0;
+            cabeca = cabeca->proximo;
         }
         else
         {
-            if (indice == 0)
+            Node<T> *noAnterior = busca(indice - 1);
+            noAnterior->proximo = noAlvo->proximo;
+            if(noAlvo == cauda)
             {
-                p = cabeca;
-                cabeca = cabeca->proximo;
-                delete p;
-                tamanho--;
-            }
-            else if (indice > 0 && indice < tamanho)
-            {
-                p = busca(indice - 1);
-                Node<T> *aux = p->proximo;
-                p = aux->proximo;
-                delete aux;
-                tamanho--;
-            }
-            else if (indice > 0 && indice == tamanho)
-            {
-                p = busca(indice - 1);
-                cauda = p;
-                Node<T> *aux = cauda->proximo;
-                delete aux;
-                p->proximo = nullptr;
-                tamanho--;
+                cauda = noAnterior;
             }
         }
-        //std::cout << "Terminou!" << std::endl;
+        delete noAlvo;
+        tamanho--;
     }
 };
 

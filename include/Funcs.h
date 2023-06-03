@@ -11,7 +11,8 @@
 */
 void manageMusics(Lista<Musica *> &musics);
 
-void managePlaylist(Lista<Playlist *> &playlists);
+void managePlaylist(Lista<Playlist *> playlists);
 
+void editPlaylist(Playlist *p);
 
 #endif // FUNCS_H

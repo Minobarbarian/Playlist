@@ -10,12 +10,12 @@ void manageMusics(Lista<Musica *> &musics)
     while (action != "0")
     {
         std::cout << "====================-Manage Musics-===================" << std::endl;
-        std::cout << "1) Register new music;\n";
-        std::cout << "2) Remove music;\n";
-        std::cout << "3) List musics;\n";
-        std::cout << "0) Back;\n";
+        std::cout << "1) Registrar nova música;\n";
+        std::cout << "2) Remover música;\n";
+        std::cout << "3) Listar músicas;\n";
+        std::cout << "0) Voltar;\n";
         std::cout << "======================================================" << std::endl;
-        std::cout << "Choose your next action: ";
+        std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
 
         if (action == "1")
@@ -43,12 +43,7 @@ void manageMusics(Lista<Musica *> &musics)
             {
                 if (musics.busca(i)->dado->getTitulo().compare(musicName) == 0)
                 {   
-                    //Musica *temp = musics.busca(i);
                     musics.remover(i);
-                    //delete musics.busca(i);
-                    //cout << musics.busca(i)->dado->getTitulo() << endl;
-                    
-                    //std::cout << "terminou!" << std::endl;
                 }
             }
 
@@ -69,20 +64,21 @@ void manageMusics(Lista<Musica *> &musics)
   system("clear || cls");
 }
 
-//void editPlaylist
 
-void managePlaylist(Lista<Playlist *> &playlists)
+
+void managePlaylist(Lista<Playlist *> playlists)
 {
     std::string action;
     while (action != "0")
     {
         std::cout << "====================-Manage Playlists-===================" << std::endl;
         std::cout << "1) Add new playlist;\n";
-        std::cout << "2) Remove playlist;\n";
-        std::cout << "3) List Playlists;\n";
+        std::cout << "2) Edite uma playlist;\n";
+        std::cout << "3) Remove playlist;\n";
+        std::cout << "4) List Playlists;\n";
         std::cout << "0) Back;\n";
-        std::cout << "======================================================" << std::endl;
-        std::cout << "Choose your next action: ";
+        std::cout << "=========================================================" << std::endl;
+        std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
 
         if (action == "1")
@@ -97,6 +93,20 @@ void managePlaylist(Lista<Playlist *> &playlists)
         if (action == "2")
         {
             std::string playlistName;
+            std::cout << "Insira o nome da playlist que será editada:" << std::endl;
+            std::getline(std::cin, playlistName);
+            for (int i = 0; i < playlists.tamanho; i++)
+            {
+                if (playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
+                {
+                    editPlaylist(playlists.busca(i)->dado);
+                }
+            }
+        }
+
+        if (action == "3")
+        {
+            std::string playlistName;
             std::cout << "Insira o nome da playlist que será removida:" << std::endl;
             std::getline(std::cin, playlistName);
 
@@ -105,13 +115,12 @@ void managePlaylist(Lista<Playlist *> &playlists)
                 if (playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
                 {
                     playlists.remover(i);
-                    delete playlists.busca(i);
                 }
             }
 
         }
 
-        if (action == "3")
+        if (action == "4")
         {
             for (int i = 0; i < playlists.tamanho; i++)
             {
@@ -123,4 +132,53 @@ void managePlaylist(Lista<Playlist *> &playlists)
 
     }
     system("clear || cls");
+}
+
+void editPlaylist(Playlist *p)
+{
+    std::string action;
+    while (action != "0")
+    {
+        std::cout << "====================-Manage Playlist-===================" << std::endl;
+        std::cout << "1 - Inserir música" << std::endl;
+        std::cout << "2 - Mover música" << std::endl;
+        std::cout << "3 - Remover música" << std::endl;
+        std::cout << "4 - Listar músicas da playlist" << std::endl;
+        std::cout << "5 - Voltar ao menu principal" << std::endl;
+        std::cout << "========================================================" << std::endl;
+        std::cout << "Escolha uma opção: ";
+        std::getline(std::cin, action);
+
+        if (action == "1")
+        {
+            std::string musicName;
+            std::string artistName;
+            std::cout << "Insira o nome da música:" << std::endl;
+            std::getline(std::cin, musicName);
+            std::cout << "Insira o nome do artista da música:" << std::endl;      
+            std::getline(std::cin, artistName);
+
+            p->adicionarMusica(musicName,artistName);
+
+            system("clear || cls");
+        }
+
+        if (action == "3")
+        {
+            std::string musicName;
+            std::cout << "Insira o nome da música que será removida:" << std::endl;
+            std::getline(std::cin, musicName);
+
+            for (int i = 0; i < p->getMusicas().tamanho; i++)
+            {
+                if (p->getMusicas().busca(i)->dado->getTitulo().compare(musicName) == 0)
+                {   
+                    p->removerMusica(musicName);
+                }
+            }
+
+            system("clear || cls");
+
+        }
+    }
 }
