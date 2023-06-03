@@ -118,9 +118,19 @@ public:
             l.inserir(l2->busca(i)->dado);
         }
     }
+    
     void operator>>(Node<T> *no)
     {
-        no->dado = cauda->dado;
+        if(cabeca == nullptr)
+        {
+            no = cabeca;
+        }
+        else
+        {
+            no->proximo = cauda->proximo;
+            no->dado = cauda->dado;
+        }
+        
     }
 };
 
