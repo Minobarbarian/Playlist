@@ -118,7 +118,7 @@ public:
             l.inserir(l2->busca(i)->dado);
         }
     }
-    
+
     void operator>>(Node<T> *no)
     {
         if(cabeca == nullptr)
@@ -131,6 +131,14 @@ public:
             no->dado = cauda->dado;
         }
         
+    }
+
+    void operator<<(Node<T> *no)
+    {
+        if(no != nullptr)
+        {
+            this->inserir(no->dado);
+        }
     }
 };
 
