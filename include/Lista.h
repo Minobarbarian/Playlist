@@ -22,7 +22,10 @@ public:
     }
     Lista(Lista &l)
     {
-
+        for(int i = 0; i < l.tamanho; i++)
+        {
+            this->inserir(l.busca(i)->dado);
+        }
     }
 
     ~Lista()
