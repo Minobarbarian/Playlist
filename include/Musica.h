@@ -1,7 +1,7 @@
 #ifndef MUSICA_H
 #define MUSICA_H
 
-#include <iostream>
+//#include <iostream>
 #include <string>
 
 class Musica
@@ -22,9 +22,9 @@ public:
     std::string getArtista();
     void setArtista(std::string artista);
 
-    void adicionarMusica(Musica *song);
+    /*void adicionarMusica(Musica *song);
     bool removerMusica(std::string nome_musica);
-    void print_music();
+    void print_music();*/
 };
 
 #endif

@@ -20,11 +20,11 @@ public:
         this->cauda = nullptr;
         this->tamanho = 0;
     }
-    Lista(Lista &l)
+    Lista(Lista *l)
     {
-        for(int i = 0; i < l.tamanho; i++)
+        for(int i = 0; i < l->tamanho; i++)
         {
-            this->inserir(l.busca(i)->dado);
+            this->inserir(l->busca(i)->dado);
         }
     }
 
@@ -86,40 +86,34 @@ public:
         tamanho--;
     }
 
-    void add_elementos(Lista &l)
+    void add_nos(Lista *l)
     {
-        for(int i = 0; i < l.tamanho; i++)
+        for(int i = 0; i < l->tamanho; i++)
         {
-            inserir(l.busca(i)->dado);
+            this->inserir(l->busca(i)->dado);
         }
     }
 
-    void rem_elementos(Lista &l)
+    void rem_nos(Lista *l)
     {
-        if(l.cabeca != nullptr)
+        if(l->cabeca != nullptr)
         {
-            for(int i = 0; i < l.tamanho; i++)
+            for(int i = 0; i < l->tamanho; i++)
             {
                 for(int j = 0; j < tamanho; j++)
                 {
-                    if(this->busca(j) == l.busca(i)) this->remover(j);
+                    if(this->busca(j) == l->busca(i)) this->remover(j);
                 }
                 
             }
         }
     }
 
-    Lista operator+(Lista &l2)
+    Lista operator+(Lista *l1)
     {
-        Lista l;
-        for(int i = 0; i < this->tamanho; i++)
-        {
-            l.inserir(this->busca(i)->dado);
-        }
-        for(int i = 0; i < l2->tamanho; i++)
-        {
-            l.inserir(l2->busca(i)->dado);
-        }
+        Lista l(this);
+        l.add_nos(l1);
+        return l;
     }
 
     void operator>>(Node<T> *no)

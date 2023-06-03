@@ -3,7 +3,6 @@
 
 #include "Lista.h"
 #include "Musica.h"
-#include <iostream>
 
 class Playlist
 {
@@ -16,6 +15,7 @@ private:
 public:
 
     Playlist(std::string nome);
+    Playlist(Playlist *p);
     ~Playlist();
 
     std::string getNome();
@@ -24,10 +24,23 @@ public:
     Lista<Musica *> getMusicas();
     void setMusicas(Lista<Musica *> musicas);
 
-    void adicionarMusica(std::string titulo, std::string artista);
-    void removerMusica(std::string nome_musica);
+    void add_musica(std::string titulo, std::string artista);
+    void rem_musica(std::string nome_musica);
+
+    void add_musicas(Playlist *p);
+    void rem_musicas(Playlist *p);
+
     Node <Musica*> next_music();
     void print_musics();
+
+    Lista<Musica *> operator+(Playlist *p1);
+    Playlist operator+(Musica *m);
+
+    Lista<Musica *> operator-(Playlist *p1);
+    Playlist operator-(Musica *m);
+
+    void operator>>(Musica *m);
+    void operator<<(Musica *m);
 };
 
 #endif

@@ -1,12 +1,17 @@
 #include "Playlist.h"
-#include "Musica.h"
-#include <string>
 #include <iostream>
 
 Playlist::Playlist(std::string nome)
 {
     this->nome = nome;
     this->contador = 0;
+}
+
+Playlist::Playlist(Playlist *p)
+{
+    this->nome = p->nome;
+    this->contador = p->contador;
+    this->setMusicas(p->getMusicas());
 }
 
 Playlist::~Playlist()
@@ -37,13 +42,13 @@ void Playlist::setMusicas(Lista<Musica *> musicas)
     this->musicas = musicas;
 }
 
-void Playlist::adicionarMusica(std::string titulo, std::string artista)
+void Playlist::add_musica(std::string titulo, std::string artista)
 {
     Musica *musica = new Musica(titulo, artista);
     musicas.inserir(musica);
 }
 
-void Playlist::removerMusica(std::string titulo)
+void Playlist::rem_musica(std::string titulo)
 {
     for (int i = 0; i < musicas.tamanho; i++)
     {
@@ -52,6 +57,16 @@ void Playlist::removerMusica(std::string titulo)
             musicas.remover(i);
         }
     }
+}
+
+void Playlist::add_musicas(Playlist *p)
+{
+    //this->getMusicas().add_nos(p->getMusicas());
+}
+
+void Playlist::rem_musicas(Playlist *p)
+{
+
 }
 
 Node<Musica *> Playlist::next_music()
@@ -74,4 +89,65 @@ void Playlist::print_musics()
     {
         std::cout << this->musicas.busca(i)->dado->getTitulo() << " - " << this->musicas.busca(i)->dado->getArtista() << std::endl;
     }
+}
+
+Lista<Musica *> Playlist::operator+(Playlist *p1)
+{
+    Lista<Musica *> m(this->getMusicas());
+    for(int i = 0; i < p1->getMusicas().tamanho; i++)
+    {
+        int flag = 1;
+        for(int j = 0; j < this->getMusicas().tamanho; j++)
+        {
+            if(p1->getMusicas().busca(i) == this->getMusicas().busca(j)) flag = 0;
+        }
+        if(flag)
+        {
+            m.inserir(p1->getMusicas().busca(i)->dado);
+        } 
+    }
+    return m;
+}
+
+Playlist Playlist::operator+(Musica *m)
+{
+    Playlist p(this);
+    p.getMusicas().inserir(m);
+    return p;
+}
+
+Lista<Musica *> Playlist::operator-(Playlist *p1)
+{
+    Lista<Musica *> m;
+    for(int i = 0; i < this->getMusicas().tamanho; i++)
+    {
+        int flag = 1;
+        for(int j = 0; j < p1->getMusicas().tamanho; j++)
+        {
+            if(p1->getMusicas().busca(j) == this->getMusicas().busca(i)) flag = 0;
+        }
+        if(flag)
+        {
+            m.inserir(this->getMusicas().busca(i)->dado);
+        }
+    }
+    return m;
+}
+
+Playlist Playlist::operator-(Musica *m)
+{
+    Playlist p(this);
+    p.rem_musica(m->getTitulo());
+    return p;
+}
+
+void Playlist::operator>>(Musica *m)
+{
+    m = this->getMusicas().cabeca == nullptr? nullptr : this->getMusicas().cauda->dado;
+    this->rem_musica(this->getMusicas().cauda->dado->getTitulo());
+}
+
+void Playlist::operator<<(Musica *m)
+{
+    if(m != nullptr) this->add_musica(m->getTitulo(), m->getArtista());
 }

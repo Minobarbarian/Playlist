@@ -130,8 +130,8 @@ void managePlaylist(Lista<Playlist *> playlists)
                     break;
                 }
             }
-            o->removerMusica(mNome);
-            d->adicionarMusica(mNome, aNome);
+            o->rem_musica(mNome);
+            d->add_musica(mNome, aNome);
             system("clear || cls");
         }
 
@@ -188,7 +188,7 @@ void editPlaylist(Playlist *p)
             std::cout << "Insira o nome do artista da música:" << std::endl;      
             std::getline(std::cin, artistName);
 
-            p->adicionarMusica(musicName,artistName);
+            p->add_musica(musicName,artistName);
 
             system("clear || cls");
         }
@@ -199,7 +199,7 @@ void editPlaylist(Playlist *p)
             std::cout << "Insira o nome da música que será removida:" << std::endl;
             std::getline(std::cin, musicName);
 
-            p->removerMusica(musicName);
+            p->rem_musica(musicName);
 
             system("clear || cls");
         }

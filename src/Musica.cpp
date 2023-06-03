@@ -1,5 +1,4 @@
 #include "Musica.h"
-#include <iostream>
 
 Musica::Musica(std::string titulo, std::string artista)
 {
