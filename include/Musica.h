@@ -4,28 +4,26 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Musica
 {
 
 private:
-    string titulo;
-    string artista;
+    std::string titulo;
+    std::string artista;
 
 public:
 
-    Musica(string titulo, string artista);
+    Musica(std::string titulo, std::string artista);
     ~Musica();
 
-    string getTitulo();
-    void setTitulo(string titulo);
+    std::string getTitulo();
+    void setTitulo(std::string titulo);
 
-    string getArtista();
-    void setArtista(string artista);
+    std::string getArtista();
+    void setArtista(std::string artista);
 
     void adicionarMusica(Musica *song);
-    bool removerMusica(string nome_musica);
+    bool removerMusica(std::string nome_musica);
     void print_music();
 };
 

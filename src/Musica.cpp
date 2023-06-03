@@ -1,9 +1,7 @@
 #include "Musica.h"
 #include <iostream>
 
-using namespace std;
-
-Musica::Musica(string titulo, string artista)
+Musica::Musica(std::string titulo, std::string artista)
 {
     this->titulo = titulo;
     this->artista = artista;
@@ -13,22 +11,22 @@ Musica::~Musica()
 {
 }
 
-string Musica::getTitulo()
+std::string Musica::getTitulo()
 {
     return this->titulo;
 }
 
-void Musica::setTitulo(string titulo)
+void Musica::setTitulo(std::string titulo)
 {
     this->titulo = titulo;
 }
 
-void Musica::setArtista(string artista)
+void Musica::setArtista(std::string artista)
 {
     this->artista = artista;
 }
 
-string Musica::getArtista()
+std::string Musica::getArtista()
 {
     return this->artista;
 }

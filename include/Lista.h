@@ -4,8 +4,6 @@
 #include "Node.h"
 #include <iostream>
 
-using namespace std;
-
 //Criação do template
 template <typename T>
 

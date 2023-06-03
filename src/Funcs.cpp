@@ -1,8 +1,6 @@
-#include <iostream>
 #include <string>
 
 #include "Funcs.h"
-#include "Playlist.h"
 
 void manageMusics(Lista<Musica *> &musics)
 {
@@ -55,7 +53,7 @@ void manageMusics(Lista<Musica *> &musics)
         {
             for (int i = 0; i < musics.tamanho; i++)
             {
-                cout << musics.busca(i)->dado->getTitulo() << " - " << musics.busca(i)->dado->getArtista() << endl;
+                std::cout << musics.busca(i)->dado->getTitulo() << " - " << musics.busca(i)->dado->getArtista() << std::endl;
             }
         }
 
@@ -71,13 +69,13 @@ void managePlaylist(Lista<Playlist *> playlists)
     std::string action;
     while (action != "0")
     {
-        std::cout << "====================-Manage Playlists-===================" << std::endl;
-        std::cout << "1) Add new playlist;\n";
-        std::cout << "2) Edite uma playlist;\n";
-        std::cout << "3) Remove playlist;\n";
-        std::cout << "4) List Playlists;\n";
-        std::cout << "0) Back;\n";
-        std::cout << "=========================================================" << std::endl;
+        std::cout << "====================-Gerenciar Playlists-===================" << std::endl;
+        std::cout << "1) Adicionar nova playlist;\n";
+        std::cout << "2) Editar uma playlist;\n";
+        std::cout << "3) Remover uma playlist;\n";
+        std::cout << "4) Listar Playlists;\n";
+        std::cout << "0) Voltar;\n";
+        std::cout << "============================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
 
@@ -139,12 +137,12 @@ void editPlaylist(Playlist *p)
     std::string action;
     while (action != "0")
     {
-        std::cout << "====================-Manage Playlist-===================" << std::endl;
+        std::cout << "====================-Manage " << p->getNome() << "-===================" << std::endl;
         std::cout << "1 - Inserir música" << std::endl;
         std::cout << "2 - Mover música" << std::endl;
         std::cout << "3 - Remover música" << std::endl;
         std::cout << "4 - Listar músicas da playlist" << std::endl;
-        std::cout << "5 - Voltar ao menu principal" << std::endl;
+        std::cout << "5 - Voltar" << std::endl;
         std::cout << "========================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
@@ -176,9 +174,18 @@ void editPlaylist(Playlist *p)
                     p->removerMusica(musicName);
                 }
             }
-
             system("clear || cls");
+        }
 
+        if (action == "4")
+        {
+
+            p->print_musics(p->getMusicas().tamanho - 1);
+        }
+
+        if (action == "5")
+        {
+            break;
         }
     }
 }

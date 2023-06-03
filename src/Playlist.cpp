@@ -3,9 +3,7 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
-Playlist::Playlist(string nome)
+Playlist::Playlist(std::string nome)
 {
     this->nome = nome;
     this->contador = 0;
@@ -19,12 +17,12 @@ Playlist::~Playlist()
     }
 }
 
-string Playlist::getNome()
+std::string Playlist::getNome()
 {
     return this->nome;
 }
 
-void Playlist::setNome(string nome)
+void Playlist::setNome(std::string nome)
 {
     this->nome = nome;
 }
@@ -39,13 +37,13 @@ void Playlist::setMusicas(Lista<Musica *> musicas)
     this->musicas = musicas;
 }
 
-void Playlist::adicionarMusica(string titulo, string artista)
+void Playlist::adicionarMusica(std::string titulo, std::string artista)
 {
     Musica *musica = new Musica(titulo, artista);
     musicas.inserir(musica);
 }
 
-void Playlist::removerMusica(string titulo)
+void Playlist::removerMusica(std::string titulo)
 {
     for (int i = 0; i < musicas.tamanho; i++)
     {
@@ -56,7 +54,7 @@ void Playlist::removerMusica(string titulo)
     }
 }
 
-Node<Musica *> Playlist::next_music()
+/*Node<Musica *> Playlist::next_music()
 {
     Node<Musica *> *proxima = musicas.busca(contador);
     if((contador+1) == musicas.tamanho)
@@ -68,17 +66,17 @@ Node<Musica *> Playlist::next_music()
         proxima = musicas.busca(++contador);
         return *proxima;
     }
-}
+}*/
 
-void print_music(Lista<Musica *> songs, int tamanho)
+void Playlist::print_musics(int tam)
 {
-    if (tamanho < 0)
+    if (tam < 0)
     {
         return;
     }
     else
     {
-        cout << songs.busca(tamanho)->dado->getTitulo() << endl;
-        print_music(songs, tamanho - 1);
+        std::cout << this->musicas.busca(tam)->dado->getTitulo() << " - " << this->musicas.busca(tam)->dado->getArtista() << std::endl;
+        print_musics(tam - 1);
     }
 }

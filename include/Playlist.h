@@ -5,31 +5,29 @@
 #include "Musica.h"
 #include <iostream>
 
-using namespace std;
-
 class Playlist
 {
 
 private:
-    string nome;
+    std::string nome;
     Lista<Musica *> musicas;
     int contador;
 
 public:
 
-    Playlist(string nome);
+    Playlist(std::string nome);
     ~Playlist();
 
-    string getNome();
-    void setNome(string nome);
+    std::string getNome();
+    void setNome(std::string nome);
 
     Lista<Musica *> getMusicas();
     void setMusicas(Lista<Musica *> musicas);
 
-    void adicionarMusica(string titulo, string artista);
-    void removerMusica(string nome_musica);
+    void adicionarMusica(std::string titulo, std::string artista);
+    void removerMusica(std::string nome_musica);
     Node <Musica*> next_music();
-    void print_music();
+    void print_musics(int tamanho);
 };
 
 #endif

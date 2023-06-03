@@ -1,8 +1,6 @@
 #ifndef FUNCS_H
 #define FUNCS_H
 
-#include "Musica.h"
-#include "Lista.h"
 #include "Playlist.h"
 
 /**
