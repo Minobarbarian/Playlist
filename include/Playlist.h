@@ -27,7 +27,7 @@ public:
     void adicionarMusica(std::string titulo, std::string artista);
     void removerMusica(std::string nome_musica);
     Node <Musica*> next_music();
-    void print_musics(int tamanho);
+    void print_musics();
 };
 
 #endif

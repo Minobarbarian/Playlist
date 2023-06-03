@@ -54,7 +54,7 @@ void Playlist::removerMusica(std::string titulo)
     }
 }
 
-/*Node<Musica *> Playlist::next_music()
+Node<Musica *> Playlist::next_music()
 {
     Node<Musica *> *proxima = musicas.busca(contador);
     if((contador+1) == musicas.tamanho)
@@ -66,17 +66,12 @@ void Playlist::removerMusica(std::string titulo)
         proxima = musicas.busca(++contador);
         return *proxima;
     }
-}*/
+}
 
-void Playlist::print_musics(int tam)
+void Playlist::print_musics()
 {
-    if (tam < 0)
+    for(int i = 0; i < this->musicas.tamanho; i++)
     {
-        return;
-    }
-    else
-    {
-        std::cout << this->musicas.busca(tam)->dado->getTitulo() << " - " << this->musicas.busca(tam)->dado->getArtista() << std::endl;
-        print_musics(tam - 1);
+        std::cout << this->musicas.busca(i)->dado->getTitulo() << " - " << this->musicas.busca(i)->dado->getArtista() << std::endl;
     }
 }

@@ -8,10 +8,10 @@ void manageMusics(Lista<Musica *> &musics)
     while (action != "0")
     {
         std::cout << "====================-Manage Musics-===================" << std::endl;
-        std::cout << "1) Registrar nova música;\n";
-        std::cout << "2) Remover música;\n";
-        std::cout << "3) Listar músicas;\n";
-        std::cout << "0) Voltar;\n";
+        std::cout << "1) Registrar nova música;" << std::endl;
+        std::cout << "2) Remover música;" << std::endl;
+        std::cout << "3) Listar músicas;" << std::endl;
+        std::cout << "0) Voltar;" << std::endl;
         std::cout << "======================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
@@ -44,7 +44,7 @@ void manageMusics(Lista<Musica *> &musics)
                     musics.remover(i);
                 }
             }
-
+            //std::cout << musics.busca(0)->dado->getTitulo() << std::endl;
             system("clear || cls");
 
         }
@@ -70,11 +70,12 @@ void managePlaylist(Lista<Playlist *> playlists)
     while (action != "0")
     {
         std::cout << "====================-Gerenciar Playlists-===================" << std::endl;
-        std::cout << "1) Adicionar nova playlist;\n";
-        std::cout << "2) Editar uma playlist;\n";
-        std::cout << "3) Remover uma playlist;\n";
-        std::cout << "4) Listar Playlists;\n";
-        std::cout << "0) Voltar;\n";
+        std::cout << "1) Adicionar nova playlist;"  << std::endl;
+        std::cout << "2) Editar uma playlist;"  << std::endl;
+        std::cout << "3) Mover música" << std::endl;
+        std::cout << "4) Remover uma playlist;"  << std::endl;
+        std::cout << "5) Listar Playlists;"  << std::endl;
+        std::cout << "0) Voltar;"  << std::endl;
         std::cout << "============================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
@@ -86,6 +87,7 @@ void managePlaylist(Lista<Playlist *> playlists)
             std::getline(std::cin, playlistName);
             Playlist *play = new Playlist(playlistName);
             playlists.inserir(play);
+            system("clear || cls");
         }
 
         if (action == "2")
@@ -100,9 +102,40 @@ void managePlaylist(Lista<Playlist *> playlists)
                     editPlaylist(playlists.busca(i)->dado);
                 }
             }
+            system("clear || cls");
         }
 
-        if (action == "3")
+        if(action == "3")
+        {
+            std::string origem, destino, mNome,aNome;
+            std::cout << "Insira o nome da playlist origem:" << std::endl;
+            std::getline(std::cin, origem);
+            std::cout << "Insira o nome da música:" << std::endl;
+            std::getline(std::cin, mNome);
+            std::cout << "Insira o nome da playlist destino:" << std::endl;
+            std::getline(std::cin, destino);
+            Playlist *o;
+            Playlist *d;
+            
+            for(int i = 0; i < playlists.tamanho; i++)
+            {
+                if(playlists.busca(i)->dado->getNome().compare(origem) == 0) o = playlists.busca(i)->dado;
+                if(playlists.busca(i)->dado->getNome().compare(destino) == 0) d = playlists.busca(i)->dado;
+            }
+            for(int i = 0; i < o->getMusicas().tamanho; i++)
+            {
+                if(o->getMusicas().busca(i)->dado->getTitulo().compare(mNome) == 0)
+                {
+                    aNome = o->getMusicas().busca(i)->dado->getArtista();
+                    break;
+                }
+            }
+            o->removerMusica(mNome);
+            d->adicionarMusica(mNome, aNome);
+            system("clear || cls");
+        }
+
+        if (action == "4")
         {
             std::string playlistName;
             std::cout << "Insira o nome da playlist que será removida:" << std::endl;
@@ -115,10 +148,10 @@ void managePlaylist(Lista<Playlist *> playlists)
                     playlists.remover(i);
                 }
             }
-
+            system("clear || cls");
         }
 
-        if (action == "4")
+        if (action == "5")
         {
             for (int i = 0; i < playlists.tamanho; i++)
             {
@@ -139,10 +172,9 @@ void editPlaylist(Playlist *p)
     {
         std::cout << "====================-Manage " << p->getNome() << "-===================" << std::endl;
         std::cout << "1 - Inserir música" << std::endl;
-        std::cout << "2 - Mover música" << std::endl;
-        std::cout << "3 - Remover música" << std::endl;
-        std::cout << "4 - Listar músicas da playlist" << std::endl;
-        std::cout << "5 - Voltar" << std::endl;
+        std::cout << "2 - Remover música" << std::endl;
+        std::cout << "3 - Listar músicas da playlist" << std::endl;
+        std::cout << "0 - Voltar" << std::endl;
         std::cout << "========================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
         std::getline(std::cin, action);
@@ -161,31 +193,23 @@ void editPlaylist(Playlist *p)
             system("clear || cls");
         }
 
-        if (action == "3")
+        if (action == "2")
         {
             std::string musicName;
             std::cout << "Insira o nome da música que será removida:" << std::endl;
             std::getline(std::cin, musicName);
 
-            for (int i = 0; i < p->getMusicas().tamanho; i++)
-            {
-                if (p->getMusicas().busca(i)->dado->getTitulo().compare(musicName) == 0)
-                {   
-                    p->removerMusica(musicName);
-                }
-            }
+            p->removerMusica(musicName);
+
             system("clear || cls");
         }
 
-        if (action == "4")
+        if (action == "3")
         {
-
-            p->print_musics(p->getMusicas().tamanho - 1);
+            p->print_musics();
         }
 
-        if (action == "5")
-        {
-            break;
-        }
+        if (action == "0") { break; }
     }
+    system("clear || cls");
 }

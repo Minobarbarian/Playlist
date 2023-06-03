@@ -22,6 +22,11 @@ public:
         delete proximo;
     }
 
+    void setNext(Node *node)
+    {
+        this->proximo = node;
+    }
+
     //Node<T> *getNext() const { return this->proximo; }
 
 };
