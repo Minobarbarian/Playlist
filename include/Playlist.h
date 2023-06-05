@@ -10,7 +10,6 @@ class Playlist
 private:
     std::string nome;
     Lista<Musica *> musicas;
-    int contador;
 
 public:
 
@@ -30,7 +29,6 @@ public:
     void add_musicas(Playlist *p);
     void rem_musicas(Playlist *p);
 
-    Node <Musica*> next_music();
     void print_musics();
 
     Lista<Musica *> operator+(Playlist *p1);

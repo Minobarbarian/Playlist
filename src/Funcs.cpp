@@ -77,7 +77,8 @@ void managePlaylist(Lista<Playlist *> playlists)
         std::cout << "4) Remover Playlist;"  << std::endl;
         std::cout << "5) Listar Playlists;"  << std::endl;
         std::cout << "6) Tocar Playlist;"  << std::endl;
-        std::cout << "7) Tocar Musica;"  << std::endl;
+        std::cout << "7) Tocar Música;"  << std::endl;
+        std::cout << "8) Concatenar músicas duma Playlist noutra" << std::endl;
         std::cout << "0) Voltar;"  << std::endl;
         std::cout << "============================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
@@ -90,7 +91,7 @@ void managePlaylist(Lista<Playlist *> playlists)
             std::getline(std::cin, playlistName);
             Playlist *play = new Playlist(playlistName);
             playlists.inserir(play);
-            system("clear || cls");
+            std::cout << "Tamanho de playlists: " << playlists.tamanho << std::endl;
         }
 
         if (action == "2")
@@ -230,6 +231,26 @@ void managePlaylist(Lista<Playlist *> playlists)
             {
                 std::cout << "Escolha uma playlist primeiro!" << std::endl;
             }
+        }
+
+        if (action == "8")
+        {
+            std::string origem, destino;
+            std::cout << "Insira o nome da playlist origem:" << std::endl;
+            std::getline(std::cin, origem);
+            std::cout << "Insira o nome da playlist destino:" << std::endl;
+            std::getline(std::cin, destino);
+
+            Playlist *o = nullptr;
+            Playlist *d = nullptr;
+            
+            for(int i = 0; i < playlists.tamanho; i++)
+            {
+                if(playlists.busca(i)->dado->getNome().compare(origem) == 0) o = playlists.busca(i)->dado;
+                if(playlists.busca(i)->dado->getNome().compare(destino) == 0) d = playlists.busca(i)->dado;
+            }
+            d->add_musicas(o);
+            d->print_musics();
         }
 
         if (action == "0") break;

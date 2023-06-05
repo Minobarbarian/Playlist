@@ -11,10 +11,7 @@ int main(int argc, char** argv)
     Lista<Musica *> musics;
     Lista<Playlist *> playlists;
 
-    std::ifstream in("Arquivo.txt");
-    //std::ofstream out(argv[1]);
-
-    
+    std::ifstream in(argv[1]);
     std::string line;
 
     while(getline(in,line))
@@ -38,9 +35,8 @@ int main(int argc, char** argv)
         }
     }
 
-    
-
     std::string option;
+
     while (option != "0")
     {
         std::cout << "==========================-Menu-======================" << std::endl;
@@ -54,7 +50,25 @@ int main(int argc, char** argv)
         if (option == "1") { manageMusics(musics); }
 
         if (option == "2") { managePlaylist(playlists); }
-  }
+    }
 
-  system("clear || cls");
+    std::ofstream out(argv[1]);
+    std::cout << "Tamanho de playlists: " << playlists.tamanho << std::endl;
+
+    for(int i = 0; i < playlists.tamanho; i++)
+    {
+        out << playlists.busca(i)->dado->getNome() << ";";
+        std::cout << playlists.busca(i)->dado->getNome() << std::endl;
+
+        for(int j = 0; j < playlists.busca(i)->dado->getMusicas().tamanho; j++)
+        {
+            out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getTitulo() << ":";
+            out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getArtista();
+            if(j < playlists.busca(i)->dado->getMusicas().tamanho-1) out << ",";
+        }
+        
+        if(i < playlists.tamanho-1) out << std::endl;
+    }
+    
+  //system("clear || cls");
 }

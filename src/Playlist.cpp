@@ -4,21 +4,19 @@
 Playlist::Playlist(std::string nome)
 {
     this->nome = nome;
-    this->contador = 0;
 }
 
 Playlist::Playlist(Playlist *p)
 {
     this->nome = p->nome;
-    this->contador = p->contador;
     this->setMusicas(p->getMusicas());
 }
 
 Playlist::~Playlist()
 {
-    for(int i = 0; i < this->musicas.tamanho; i++)
+    while(this->musicas.tamanho != 0)
     {
-        this->musicas.remover(i);
+        this->musicas.remover(0);
     }
 }
 
@@ -61,26 +59,12 @@ void Playlist::rem_musica(std::string titulo)
 
 void Playlist::add_musicas(Playlist *p)
 {
-    //this->getMusicas().add_nos(p->getMusicas());
+    this->getMusicas().add_nos(p->getMusicas());
 }
 
 void Playlist::rem_musicas(Playlist *p)
 {
-
-}
-
-Node<Musica *> Playlist::next_music()
-{
-    Node<Musica *> *proxima = musicas.busca(contador);
-    if((contador+1) == musicas.tamanho)
-    {
-        return nullptr;
-    }
-    else
-    {
-        proxima = musicas.busca(++contador);
-        return *proxima;
-    }
+    //this->getMusicas().rem_nos(p->getMusicas());
 }
 
 void Playlist::print_musics()

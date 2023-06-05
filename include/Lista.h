@@ -30,7 +30,7 @@ public:
 
     ~Lista()
     {
-        while(tamanho) { remover(0); }
+        while(tamanho != 0) { remover(0); }
     }
 
     void inserir(T valor)
@@ -87,23 +87,27 @@ public:
         tamanho--;
     }
 
-    void add_nos(Lista *l)
+    void add_nos(Lista l)
     {
-        for(int i = 0; i < l->tamanho; i++)
+        std::cout << l.tamanho << std::endl;
+        std::cout << tamanho << std::endl;
+        for(int i = 0; i < l.tamanho; i++)
         {
-            this->inserir(l->busca(i)->dado);
+            //std::cout << l.busca(i)->dado << std::endl;
+            //this = this << l.busca(i);
+            inserir(l.busca(i)->dado);
         }
     }
 
-    void rem_nos(Lista *l)
+    void rem_nos(Lista l)
     {
-        if(l->cabeca != nullptr)
+        if(l.cabeca != nullptr)
         {
-            for(int i = 0; i < l->tamanho; i++)
+            for(int i = 0; i < l.tamanho; i++)
             {
                 for(int j = 0; j < tamanho; j++)
                 {
-                    if(this->busca(j) == l->busca(i)) this->remover(j);
+                    if(this->busca(j) == l.busca(i)) this->remover(j);
                 }
                 
             }
@@ -135,9 +139,11 @@ public:
     {
         if(no != nullptr)
         {
-            this->inserir(no->dado);
+            this->inserir(no.dado);
         }
     }
+
+    
 };
 
 #endif
