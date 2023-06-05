@@ -68,7 +68,7 @@ public:
 
     void remover(int indice)
     {
-        Node<T> *noAlvo = busca(indice);
+        Node<T> *noAlvo = this->busca(indice);
         if(indice == 0)
         {
             cabeca = cabeca->proximo;
@@ -82,6 +82,7 @@ public:
                 cauda = noAnterior;
             }
         }
+        noAlvo = nullptr;
         delete noAlvo;
         tamanho--;
     }

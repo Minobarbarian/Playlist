@@ -42,10 +42,10 @@ void manageMusics(Lista<Musica *> &musics)
                 if (musics.busca(i)->dado->getTitulo().compare(musicName) == 0)
                 {   
                     musics.remover(i);
+                    break;
                 }
             }
             //std::cout << musics.busca(0)->dado->getTitulo() << std::endl;
-            system("clear || cls");
 
         }
 
