@@ -45,8 +45,7 @@ void manageMusics(Lista<Musica *> &musics)
                     break;
                 }
             }
-            //std::cout << musics.busca(0)->dado->getTitulo() << std::endl;
-
+            system("clear || cls");
         }
 
         if (action == "3")
@@ -66,15 +65,19 @@ void manageMusics(Lista<Musica *> &musics)
 
 void managePlaylist(Lista<Playlist *> playlists)
 {
+    Playlist *p = nullptr;
+    Musica *m = nullptr;
     std::string action;
     while (action != "0")
     {
         std::cout << "====================-Gerenciar Playlists-===================" << std::endl;
-        std::cout << "1) Adicionar nova playlist;"  << std::endl;
-        std::cout << "2) Editar uma playlist;"  << std::endl;
-        std::cout << "3) Mover música" << std::endl;
-        std::cout << "4) Remover uma playlist;"  << std::endl;
+        std::cout << "1) Adicionar Playlist;"  << std::endl;
+        std::cout << "2) Editar Playlist;"  << std::endl;
+        std::cout << "3) Mover Música" << std::endl;
+        std::cout << "4) Remover Playlist;"  << std::endl;
         std::cout << "5) Listar Playlists;"  << std::endl;
+        std::cout << "6) Tocar Playlist;"  << std::endl;
+        std::cout << "7) Tocar Musica;"  << std::endl;
         std::cout << "0) Voltar;"  << std::endl;
         std::cout << "============================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
@@ -156,6 +159,76 @@ void managePlaylist(Lista<Playlist *> playlists)
             for (int i = 0; i < playlists.tamanho; i++)
             {
                 std::cout << playlists.busca(i)->dado->getNome() << std::endl;
+            }
+        }
+
+        if (action == "6")
+        {
+            int flag = 1;
+            std::string playlistName;
+            std::cout << "Insira o nome da playlist a ser tocada:" << std::endl;
+            std::getline(std::cin, playlistName);
+            
+            for(int i = 0; i < playlists.tamanho; i++)
+            {
+                if(playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
+                {
+                    p = playlists.busca(i)->dado;
+                    m = p->getMusicas().busca(0)->dado;
+                    flag = 0;
+                    break;
+                }
+            }
+            if(p != nullptr && !flag)
+            {
+                std::cout << "Tocando " << p->getNome() << "." << std::endl;
+            }
+            else
+            {
+                std::cout << "Nenhuma playlist encontrada com esse nome." << std::endl;
+            }
+        }
+
+        if (action == "7")
+        {
+            int flag = 1;
+            if(p != nullptr)
+            {
+                int index;
+                if(m != nullptr)
+                {
+                    std::cout << "Tocando " << m->getTitulo() << "." << std::endl;
+                    for(int i = 0; i < p->getMusicas().tamanho; i++)
+                    {
+                        if(p->getMusicas().busca(i)->dado == m)
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    std::string opcao;
+                    std::cout << "Fim da playlist, deseja repetir? S/N" << std::endl;
+                    std::getline(std::cin, opcao);
+                    if(opcao == "S")
+                    {
+                        index = -1;
+                    }
+                    else
+                    {
+                        m = nullptr;
+                        p = nullptr;
+                        flag = 0;
+                    }
+                }
+                
+                if(flag) m = p->getMusicas().busca(index+1) == nullptr? nullptr : p->getMusicas().busca(index+1)->dado;
+            }
+            else
+            {
+                std::cout << "Escolha uma playlist primeiro!" << std::endl;
             }
         }
 
