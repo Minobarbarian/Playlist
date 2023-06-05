@@ -1,2 +1,2 @@
-Orakel;Sawchain:Savant,Spacewolfe:Savant,Origin:Savant,Red Claw:Savant
+Orakel;Sawchain:Savant,Spacewolfe:Savant,Origin:Savant,Red Claw:Savant,Reggaetron:Savant
 Vybz;Boss:Savant,Indica:Savant,Judas:Savant,Troll:Savant
