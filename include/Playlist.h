@@ -20,7 +20,7 @@ public:
     std::string getNome();
     void setNome(std::string nome);
 
-    Lista<Musica *> getMusicas();
+    Lista<Musica *>* getMusicas();
     void setMusicas(Lista<Musica *> musicas);
 
     void add_musica(std::string titulo, std::string artista);

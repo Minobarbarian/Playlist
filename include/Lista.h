@@ -87,16 +87,11 @@ public:
         tamanho--;
     }
 
-    void add_nos(Lista l)
+    void add_nos(Lista *l)
     {
-        std::cout << l.tamanho << std::endl;
-        std::cout << tamanho << std::endl;
-        for(int i = 0; i < l.tamanho; i++)
-        {
-            //std::cout << l.busca(i)->dado << std::endl;
-            //this = this << l.busca(i);
-            inserir(l.busca(i)->dado);
-        }
+        std::cout << "Chegou!" << std::endl;
+        cauda->proximo = l->cabeca;
+        cauda = l->cauda;
     }
 
     void rem_nos(Lista l)

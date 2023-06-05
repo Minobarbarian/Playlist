@@ -126,11 +126,11 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(playlists.busca(i)->dado->getNome().compare(origem) == 0) o = playlists.busca(i)->dado;
                 if(playlists.busca(i)->dado->getNome().compare(destino) == 0) d = playlists.busca(i)->dado;
             }
-            for(int i = 0; i < o->getMusicas().tamanho; i++)
+            for(int i = 0; i < o->getMusicas()->tamanho; i++)
             {
-                if(o->getMusicas().busca(i)->dado->getTitulo().compare(mNome) == 0)
+                if(o->getMusicas()->busca(i)->dado->getTitulo().compare(mNome) == 0)
                 {
-                    aNome = o->getMusicas().busca(i)->dado->getArtista();
+                    aNome = o->getMusicas()->busca(i)->dado->getArtista();
                     break;
                 }
             }
@@ -175,7 +175,7 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
                 {
                     p = playlists.busca(i)->dado;
-                    m = p->getMusicas().busca(0)->dado;
+                    m = p->getMusicas()->busca(0)->dado;
                     flag = 0;
                     break;
                 }
@@ -199,9 +199,9 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(m != nullptr)
                 {
                     std::cout << "Tocando " << m->getTitulo() << "." << std::endl;
-                    for(int i = 0; i < p->getMusicas().tamanho; i++)
+                    for(int i = 0; i < p->getMusicas()->tamanho; i++)
                     {
-                        if(p->getMusicas().busca(i)->dado == m)
+                        if(p->getMusicas()->busca(i)->dado == m)
                         {
                             index = i;
                             break;
@@ -225,7 +225,7 @@ void managePlaylist(Lista<Playlist *> playlists)
                     }
                 }
                 
-                if(flag) m = p->getMusicas().busca(index+1) == nullptr? nullptr : p->getMusicas().busca(index+1)->dado;
+                if(flag) m = p->getMusicas()->busca(index+1) == nullptr? nullptr : p->getMusicas()->busca(index+1)->dado;
             }
             else
             {
