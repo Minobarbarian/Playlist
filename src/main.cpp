@@ -1,10 +1,10 @@
 #include "Musica.h"
 #include "Playlist.h"
 #include "Funcs.h"
-#include <iostream>
-#include <string>
 
-using namespace std;
+#include <string>
+#include <iostream>
+#include <fstream>
 
 //Lista<Musica *> louvores;
 //Lista<Playlist *> library;
@@ -250,10 +250,39 @@ void editar_playlist()
     cout << "Escolha uma opção: ";
 }
 */
-int main()
+int main(int argc, char** argv)
 {
     Lista<Musica *> musics;
     Lista<Playlist *> playlists;
+
+    std::ifstream in("Arquivo.txt");
+    //std::ofstream out(argv[1]);
+
+    
+    std::string line;
+
+    while(getline(in,line))
+    {
+        std::size_t pos = line.find(";");
+        Playlist *play = new Playlist(line.substr(0,pos));
+
+        playlists.inserir(play);
+        std::string resto, musica;
+        std::size_t pos1,pos2;
+        resto = line.substr(pos+1);
+        
+        while(resto.find(",") != std::string::npos || resto.find(":") != std::string::npos)
+        {
+            pos1 = resto.find(",");
+            musica = resto.substr(0,pos1);
+            pos2 = musica.find(":");
+            play->add_musica(musica.substr(0,pos2),musica.substr(pos2+1));
+            if(resto.find(",") != std::string::npos) resto = resto.substr(pos1+1);
+            else break;
+        }
+    }
+
+    
 
     std::string option;
     while (option != "0")
