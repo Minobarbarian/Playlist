@@ -112,6 +112,8 @@ Quanto ao item D, não foi utilizado apesar de ter sido escrito.
 #### Vazamento de Memória
 O código está vazando memória, mais precisamente, 30 allocs não são liberados após término de execução quando ./program Arquivo.txt é executado e saindo imediatamente dos menus.
 
+### Limitações
+Visto que não foram atendidas as demandas 1, 2, 3 e 4 e não consegui tratar o vazamento de memória, meu projeto peca em todos esses quesitos.
 ## Dificuldades
 
 Dificuldades em definir e utilizar os operadores sobrecarregados.

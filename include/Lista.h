@@ -155,7 +155,7 @@ public:
         this->cauda->proximo = l.cabeca;
         this->cauda = l.cauda;
         this->tamanho += l.tamanho;
-        std::cout << this->tamanho << std::endl;
+        //std::cout << this->tamanho << std::endl;
     }
 
     /*!
