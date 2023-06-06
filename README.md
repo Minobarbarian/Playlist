@@ -38,6 +38,14 @@ Se quiser rodar sem alterações, insira:
 ./program Arquivo.txt
 ```
 
+### Doxygen
+
+Se quiser conferir e tiver instalado o Doxygen na sua máquina, abra o Doxyfile no diretório Playlist, procure por "OUTPUT_DIRECTORY" e "INPUT" com ctrl+f, mude o caminho para o que preferir, e finalmente insira no terminal:
+```bash
+doxygen
+```
+Após isso, abra a pasta html gerada no local configurado e abra o arquivo index.html com o navegador.
+
 ## Componentes
 
 ### Alunos
