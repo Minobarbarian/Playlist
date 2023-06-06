@@ -54,6 +54,37 @@ André de Oliveira Barbosa
 
 João Antônio Costa Paiva Chagas
 
+## Demandas atendidas
+
+A demanda da questão 5 foi cumprida, e pode ser testada com:
+### Leitura
+```bash
+./program Arquivo.txt
+2
+5
+2
+Orakel
+3
+```
+### Escrita
+```bash
+./program Arquivo.txt
+2
+1
+Vario
+2
+Vario
+1
+Splinter
+Savant
+1
+Vario
+Savant
+0
+0
+0
+```
+Após encerrar confira Arquivo.txt em Playlist para ver se salvou o que foi feito.
 ## Dificuldades
 
 Dificuldades em definir e utilizar os operadores sobrecarregados.
