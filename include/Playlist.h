@@ -14,14 +14,14 @@ private:
 public:
 
     Playlist(std::string nome);
-    Playlist(Playlist *p);
+    Playlist(Playlist* p);
     ~Playlist();
 
     std::string getNome();
     void setNome(std::string nome);
 
     Lista<Musica *> getMusicas();
-    void setMusicas(Lista<Musica *> musicas);
+    void setMusicas(Lista<Musica *>& musicas);
 
     void add_musica(std::string titulo, std::string artista);
     void rem_musica(std::string nome_musica);

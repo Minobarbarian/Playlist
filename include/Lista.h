@@ -87,6 +87,43 @@ public:
         tamanho--;
     }
 
+    void limpar(int indice)
+    {
+        Node<T> *noAlvo = this->busca(indice);
+        if(indice == 0)
+        {
+            cabeca = cabeca->proximo;
+        }
+        else
+        {
+            Node<T> *noAnterior = busca(indice - 1);
+            noAnterior->proximo = noAlvo->proximo;
+            if(noAlvo == cauda)
+            {
+                cauda = noAnterior;
+            }
+        }
+        delete noAlvo->dado;
+        noAlvo = nullptr;
+        delete noAlvo;
+        tamanho--;
+    }
+
+    void remove_nos()
+    {
+        while(tamanho != 0)
+        {
+            remove(0);
+        }
+    }
+
+    void limpa_nos()
+    {
+        while(tamanho != 0)
+        {
+            limpar(0);
+        }
+    }
     void add_nos(Lista<T>& l)
     {
         this->cauda->proximo = l.cabeca;
@@ -112,7 +149,7 @@ public:
 
     Lista operator+(Lista<T>& l1)
     {
-        Lista<T> l(this);
+        Lista l(*this);
         l.add_nos(l1);
         return l;
     }

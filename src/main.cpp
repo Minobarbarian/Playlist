@@ -53,22 +53,22 @@ int main(int argc, char** argv)
     }
 
     std::ofstream out(argv[1]);
-    std::cout << "Tamanho de playlists: " << playlists.tamanho << std::endl;
 
+    //std::cout << playlists.busca(2)->dado->getNome() << std::endl;
     for(int i = 0; i < playlists.tamanho; i++)
     {
         out << playlists.busca(i)->dado->getNome() << ";";
-        std::cout << playlists.busca(i)->dado->getNome() << std::endl;
-
         for(int j = 0; j < playlists.busca(i)->dado->getMusicas().tamanho; j++)
         {
+            /*std::cout << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getTitulo() << ":" <<
+            playlists.busca(i)->dado->getMusicas().busca(j)->dado->getArtista() << std::endl;*/
             out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getTitulo() << ":";
             out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getArtista();
             if(j < playlists.busca(i)->dado->getMusicas().tamanho-1) out << ",";
         }
-
         if(i < playlists.tamanho-1) out << std::endl;
     }
-    
+    //playlists.limpa_nos();
+    musics.limpa_nos();
   //system("clear || cls");
 }

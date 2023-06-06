@@ -6,18 +6,15 @@ Playlist::Playlist(std::string nome)
     this->nome = nome;
 }
 
-Playlist::Playlist(Playlist *p)
+Playlist::Playlist(Playlist* p)
 {
     this->nome = p->nome;
-    this->setMusicas(p->getMusicas());
+    this->setMusicas(p->musicas);
 }
 
 Playlist::~Playlist()
 {
-    while(this->musicas.tamanho != 0)
-    {
-        this->musicas.remover(0);
-    }
+    musicas.remove_nos();
 }
 
 std::string Playlist::getNome()
@@ -35,7 +32,7 @@ Lista<Musica *> Playlist::getMusicas()
     return this->musicas;
 }
 
-void Playlist::setMusicas(Lista<Musica *> musicas)
+void Playlist::setMusicas(Lista<Musica *>& musicas)
 {
     this->musicas = musicas;
 }
@@ -78,7 +75,7 @@ void Playlist::print_musics()
 
 Lista<Musica *> Playlist::operator+(Playlist& p1)
 {
-    Lista<Musica *> m(this->getMusicas());
+    Lista<Musica *> m(&this->musicas);
     for(int i = 0; i < p1.getMusicas().tamanho; i++)
     {
         int flag = 1;
