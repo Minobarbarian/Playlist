@@ -15,13 +15,26 @@ cd Playlist
 
 Observação: Verifique se a versão do cmake da sua máquina condiz com o configurado no CMakeLists.txt
 
-Para rodar o projeto, digite os seguintes comandos:
+Para rodar o projeto pela primeira vez, digite os seguintes comandos no terminal:
 
 ```bash
 cmake .
 
 make
 
+./program Arquivo.txt
+```
+
+Se quiser rodar novamente após modificações, insira:
+```bash
+make
+
+./program Arquivo.txt
+
+```
+
+Se quiser rodar sem alterações, insira:
+```bash
 ./program Arquivo.txt
 ```
 
@@ -35,4 +48,4 @@ João Antônio Costa Paiva Chagas
 
 ## Dificuldades
 
-Dificuldades em utilizar os operadores sobrecarregados.
+Dificuldades em definir e utilizar os operadores sobrecarregados.
