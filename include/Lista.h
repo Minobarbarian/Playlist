@@ -28,10 +28,10 @@ public:
         }
     }
 
-    ~Lista()
-    {
-        while(tamanho != 0) { remover(0); }
-    }
+    //~Lista()
+    //{
+    //    while(tamanho != 0) { remover(0); }
+    //}
 
     void inserir(T valor)
     {
@@ -87,14 +87,15 @@ public:
         tamanho--;
     }
 
-    void add_nos(Lista *l)
+    void add_nos(Lista<T>& l)
     {
-        std::cout << "Chegou!" << std::endl;
-        cauda->proximo = l->cabeca;
-        cauda = l->cauda;
+        this->cauda->proximo = l.cabeca;
+        this->cauda = l.cauda;
+        this->tamanho += l.tamanho;
+        std::cout << this->tamanho << std::endl;
     }
 
-    void rem_nos(Lista l)
+    void rem_nos(Lista<T>& l)
     {
         if(l.cabeca != nullptr)
         {
@@ -109,14 +110,14 @@ public:
         }
     }
 
-    Lista operator+(Lista *l1)
+    Lista operator+(Lista<T>& l1)
     {
-        Lista l(this);
+        Lista<T> l(this);
         l.add_nos(l1);
         return l;
     }
 
-    void operator>>(Node<T> *no)
+    void operator>>(Node<T>& no)
     {
         if(cabeca == nullptr)
         {
@@ -127,10 +128,9 @@ public:
             no->proximo = cauda->proximo;
             no->dado = cauda->dado;
         }
-        
     }
 
-    void operator<<(Node<T> *no)
+    void operator<<(Node<T>& no)
     {
         if(no != nullptr)
         {

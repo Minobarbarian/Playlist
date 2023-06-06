@@ -20,25 +20,25 @@ public:
     std::string getNome();
     void setNome(std::string nome);
 
-    Lista<Musica *>* getMusicas();
+    Lista<Musica *> getMusicas();
     void setMusicas(Lista<Musica *> musicas);
 
     void add_musica(std::string titulo, std::string artista);
     void rem_musica(std::string nome_musica);
 
-    void add_musicas(Playlist *p);
-    void rem_musicas(Playlist *p);
+    void add_musicas(Playlist& p);
+    void rem_musicas(Playlist& p);
 
     void print_musics();
 
-    Lista<Musica *> operator+(Playlist *p1);
-    Playlist operator+(Musica *m);
+    Lista<Musica *> operator+(Playlist& p1);
+    Playlist operator+(Musica* m);
 
-    Lista<Musica *> operator-(Playlist *p1);
-    Playlist operator-(Musica *m);
+    Lista<Musica *> operator-(Playlist& p1);
+    Playlist operator-(Musica& m);
 
-    void operator>>(Musica *m);
-    void operator<<(Musica *m);
+    void operator>>(Musica* m);
+    void operator<<(Musica* m);
 };
 
 #endif

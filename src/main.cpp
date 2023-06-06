@@ -60,11 +60,11 @@ int main(int argc, char** argv)
         out << playlists.busca(i)->dado->getNome() << ";";
         std::cout << playlists.busca(i)->dado->getNome() << std::endl;
 
-        for(int j = 0; j < playlists.busca(i)->dado->getMusicas()->tamanho; j++)
+        for(int j = 0; j < playlists.busca(i)->dado->getMusicas().tamanho; j++)
         {
-            out << playlists.busca(i)->dado->getMusicas()->busca(j)->dado->getTitulo() << ":";
-            out << playlists.busca(i)->dado->getMusicas()->busca(j)->dado->getArtista();
-            if(j < playlists.busca(i)->dado->getMusicas()->tamanho-1) out << ",";
+            out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getTitulo() << ":";
+            out << playlists.busca(i)->dado->getMusicas().busca(j)->dado->getArtista();
+            if(j < playlists.busca(i)->dado->getMusicas().tamanho-1) out << ",";
         }
 
         if(i < playlists.tamanho-1) out << std::endl;

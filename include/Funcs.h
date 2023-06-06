@@ -7,10 +7,10 @@
  * @brief Entra na primeira opção do menu
  * 
 */
-void manageMusics(Lista<Musica *> &musics);
+void manageMusics(Lista<Musica *>& musics);
 
-void managePlaylist(Lista<Playlist *> playlists);
+void managePlaylist(Lista<Playlist *>& playlists);
 
-void editPlaylist(Playlist *p);
+void editPlaylist(Playlist& p);
 
 #endif // FUNCS_H

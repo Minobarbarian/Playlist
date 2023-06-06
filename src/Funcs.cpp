@@ -63,7 +63,7 @@ void manageMusics(Lista<Musica *> &musics)
 
 
 
-void managePlaylist(Lista<Playlist *> playlists)
+void managePlaylist(Lista<Playlist *>& playlists)
 {
     Playlist *p = nullptr;
     Musica *m = nullptr;
@@ -103,7 +103,7 @@ void managePlaylist(Lista<Playlist *> playlists)
             {
                 if (playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
                 {
-                    editPlaylist(playlists.busca(i)->dado);
+                    editPlaylist(*(playlists.busca(i)->dado));
                 }
             }
             system("clear || cls");
@@ -126,11 +126,11 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(playlists.busca(i)->dado->getNome().compare(origem) == 0) o = playlists.busca(i)->dado;
                 if(playlists.busca(i)->dado->getNome().compare(destino) == 0) d = playlists.busca(i)->dado;
             }
-            for(int i = 0; i < o->getMusicas()->tamanho; i++)
+            for(int i = 0; i < o->getMusicas().tamanho; i++)
             {
-                if(o->getMusicas()->busca(i)->dado->getTitulo().compare(mNome) == 0)
+                if(o->getMusicas().busca(i)->dado->getTitulo().compare(mNome) == 0)
                 {
-                    aNome = o->getMusicas()->busca(i)->dado->getArtista();
+                    aNome = o->getMusicas().busca(i)->dado->getArtista();
                     break;
                 }
             }
@@ -175,7 +175,7 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(playlists.busca(i)->dado->getNome().compare(playlistName) == 0)
                 {
                     p = playlists.busca(i)->dado;
-                    m = p->getMusicas()->busca(0)->dado;
+                    m = p->getMusicas().busca(0)->dado;
                     flag = 0;
                     break;
                 }
@@ -199,9 +199,9 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(m != nullptr)
                 {
                     std::cout << "Tocando " << m->getTitulo() << "." << std::endl;
-                    for(int i = 0; i < p->getMusicas()->tamanho; i++)
+                    for(int i = 0; i < p->getMusicas().tamanho; i++)
                     {
-                        if(p->getMusicas()->busca(i)->dado == m)
+                        if(p->getMusicas().busca(i)->dado == m)
                         {
                             index = i;
                             break;
@@ -225,7 +225,7 @@ void managePlaylist(Lista<Playlist *> playlists)
                     }
                 }
                 
-                if(flag) m = p->getMusicas()->busca(index+1) == nullptr? nullptr : p->getMusicas()->busca(index+1)->dado;
+                if(flag) m = p->getMusicas().busca(index+1) == nullptr? nullptr : p->getMusicas().busca(index+1)->dado;
             }
             else
             {
@@ -249,7 +249,7 @@ void managePlaylist(Lista<Playlist *> playlists)
                 if(playlists.busca(i)->dado->getNome().compare(origem) == 0) o = playlists.busca(i)->dado;
                 if(playlists.busca(i)->dado->getNome().compare(destino) == 0) d = playlists.busca(i)->dado;
             }
-            d->add_musicas(o);
+            d->add_musicas(*o);
             d->print_musics();
         }
 
@@ -259,12 +259,12 @@ void managePlaylist(Lista<Playlist *> playlists)
     system("clear || cls");
 }
 
-void editPlaylist(Playlist *p)
+void editPlaylist(Playlist& p)
 {
     std::string action;
     while (action != "0")
     {
-        std::cout << "====================-Manage " << p->getNome() << "-===================" << std::endl;
+        std::cout << "====================-Manage " << p.getNome() << "-===================" << std::endl;
         std::cout << "1 - Inserir música" << std::endl;
         std::cout << "2 - Remover música" << std::endl;
         std::cout << "3 - Listar músicas da playlist" << std::endl;
@@ -282,7 +282,7 @@ void editPlaylist(Playlist *p)
             std::cout << "Insira o nome do artista da música:" << std::endl;      
             std::getline(std::cin, artistName);
 
-            p->add_musica(musicName,artistName);
+            p.add_musica(musicName,artistName);
 
             system("clear || cls");
         }
@@ -293,14 +293,14 @@ void editPlaylist(Playlist *p)
             std::cout << "Insira o nome da música que será removida:" << std::endl;
             std::getline(std::cin, musicName);
 
-            p->rem_musica(musicName);
+            p.rem_musica(musicName);
 
             system("clear || cls");
         }
 
         if (action == "3")
         {
-            p->print_musics();
+            p.print_musics();
         }
 
         if (action == "0") { break; }

@@ -15,6 +15,11 @@ std::string Musica::getTitulo()
     return this->titulo;
 }
 
+std::string Musica::getArtista()
+{
+    return this->artista;
+}
+
 void Musica::setTitulo(std::string titulo)
 {
     this->titulo = titulo;
@@ -23,9 +28,4 @@ void Musica::setTitulo(std::string titulo)
 void Musica::setArtista(std::string artista)
 {
     this->artista = artista;
-}
-
-std::string Musica::getArtista()
-{
-    return this->artista;
 }
