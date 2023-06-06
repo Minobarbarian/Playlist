@@ -9,7 +9,7 @@ Playlist::Playlist(std::string nome)
 Playlist::Playlist(Playlist* p)
 {
     this->nome = p->nome;
-    this->setMusicas(p->musicas);
+    this->setMusicas(&(p->musicas));
 }
 
 Playlist::~Playlist()
@@ -32,7 +32,7 @@ Lista<Musica *> Playlist::getMusicas()
     return this->musicas;
 }
 
-void Playlist::setMusicas(Lista<Musica *>& musicas)
+void Playlist::setMusicas(Lista<Musica *>* musicas)
 {
     this->musicas = musicas;
 }
@@ -73,9 +73,9 @@ void Playlist::print_musics()
     }
 }
 
-Lista<Musica *> Playlist::operator+(Playlist& p1)
+Lista<Musica *>* Playlist::operator+(Playlist& p1)
 {
-    Lista<Musica *> m(&this->musicas);
+    Lista<Musica *>* m(&this->musicas);
     for(int i = 0; i < p1.getMusicas().tamanho; i++)
     {
         int flag = 1;
@@ -85,7 +85,7 @@ Lista<Musica *> Playlist::operator+(Playlist& p1)
         }
         if(flag)
         {
-            m.inserir(p1.getMusicas().busca(i)->dado);
+            m->inserir(p1.getMusicas().busca(i)->dado);
         } 
     }
     return m;

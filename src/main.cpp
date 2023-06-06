@@ -68,7 +68,5 @@ int main(int argc, char** argv)
         }
         if(i < playlists.tamanho-1) out << std::endl;
     }
-    //playlists.limpa_nos();
-    musics.limpa_nos();
   //system("clear || cls");
 }

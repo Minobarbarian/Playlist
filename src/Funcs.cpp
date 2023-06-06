@@ -41,7 +41,7 @@ void manageMusics(Lista<Musica *> &musics)
             {
                 if (musics.busca(i)->dado->getTitulo().compare(musicName) == 0)
                 {   
-                    musics.limpar(i);
+                    musics.remover(i);
                     break;
                 }
             }
@@ -79,6 +79,7 @@ void managePlaylist(Lista<Playlist *>& playlists)
         std::cout << "6) Tocar Playlist;"  << std::endl;
         std::cout << "7) Tocar Música;"  << std::endl;
         std::cout << "8) Concatenar músicas duma Playlist noutra" << std::endl;
+        std::cout << "9) Imprimir soma de duas playlists" << std::endl;
         std::cout << "0) Voltar;"  << std::endl;
         std::cout << "============================================================" << std::endl;
         std::cout << "Escolha uma opção: ";
@@ -136,8 +137,6 @@ void managePlaylist(Lista<Playlist *>& playlists)
             }
             o->rem_musica(mNome);
             d->add_musica(mNome, aNome);
-            delete o;
-            delete d;
             system("clear || cls");
         }
 
@@ -253,15 +252,34 @@ void managePlaylist(Lista<Playlist *>& playlists)
             }
             d->add_musicas(*o);
             d->print_musics();
-            delete o;
-            delete d;
+        }
+
+        if (action == "9")
+        {
+            std::string playName1,playName2;
+            std::cout << "Insira o nome da 1ª playlist:" << std::endl;
+            std::getline(std::cin, playName1);
+            std::cout << "Insira o nome da 2ª playlist:" << std::endl;
+            std::getline(std::cin, playName2);
+
+            Playlist *p1 = nullptr;
+            Playlist *p2 = nullptr;
+
+            for(int i = 0; i < playlists.tamanho; i++)
+            {
+                if(playlists.busca(i)->dado->getNome().compare(playName1) == 0) p1 = playlists.busca(i)->dado;
+                if(playlists.busca(i)->dado->getNome().compare(playName2) == 0) p2 = playlists.busca(i)->dado;
+            }
+            Playlist p3("algo");
+            p3.setMusicas((*p1) + (*p2));
+            p3.print_musics();
+
+
         }
 
         if (action == "0") break;
 
     }
-    delete p;
-    delete m;
     system("clear || cls");
 }
 
