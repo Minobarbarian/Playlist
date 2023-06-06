@@ -54,10 +54,11 @@ André de Oliveira Barbosa
 
 João Antônio Costa Paiva Chagas
 
-## Demandas atendidas
-
+## Demandas
+### Demandas atendidas
+#### Questão 5
 A demanda da questão 5 foi cumprida, e pode ser testada com:
-### Leitura
+##### Leitura
 ```bash
 ./program Arquivo.txt
 2
@@ -66,7 +67,7 @@ A demanda da questão 5 foi cumprida, e pode ser testada com:
 Orakel
 3
 ```
-### Escrita
+##### Escrita
 ```bash
 ./program Arquivo.txt
 2
@@ -85,6 +86,28 @@ Savant
 0
 ```
 Após encerrar confira Arquivo.txt em Playlist para ver se salvou o que foi feito.
+### Demandas não atendidas
+#### Questão 1
+O código referente aos itens A, B e C da questão 1 foi escrito na Lista.h mas não está funcional.
+Particularmente, o item A é chamado no item A da questão 3 e não apresenta nenhum erro de compilação nem Segmentation Fault mas não altera nada.
+Quanto ao item B, não foi utilizado apesar de ter sido escrito.
+Quanto ao item C, é utilizado nos não utilizados itens A da Questão 2 e B da Questão 1, e no não-funcional item A da questão 4.
+#### Questão 2
+O código referente aos itens A, B e C da questão 2 foi escrito na Lista.h mas não está funcional.
+Quanto ao item A, não foi utilizado apesar de ter sido escrito.
+Quanto ao item B, não foi utilizado apesar de ter sido escrito.
+Quanto ao item C, não foi utilizado apesar de ter sido escrito.
+#### Questão 3
+O código referente aos itens A, B e C da questão 3 foi escrito na Playlist.h e Playlist.cpp mas não está funcional.
+Particularmente, o item A é utilizado na interface de Gerenciamento de Playlists (Funcs.cpp), na função managePlaylists, caso 8, só que não altera nada e não gera erros.
+Quanto ao item B, não foi utilizado apesar de ter sido escrito.
+Particularmente, o item C é utilizado no não utilizado item B da questão 4
+#### Questão 4
+O código referente aos itens A, B, C e D da questão 4 foi escrito na Playlist.h e Playlist.cpp mas não está funcional.
+Particularmente, o item A é utilizado na interface de Gerenciamento de Playlists (Funcs.cpp), na função managePlaylists, caso 9, só que gera Segmentation Fault após execução.
+Quanto ao item B, não foi utilizado apesar de ter sido escrito.
+Quanto ao item C, não foi utilizado apesar de ter sido escrito.
+Quanto ao item D, não foi utilizado apesar de ter sido escrito.
 ## Dificuldades
 
 Dificuldades em definir e utilizar os operadores sobrecarregados.
