@@ -7,14 +7,14 @@
 /*!
  *@brief Classe de Playlist.
  *
- * Um objeto da classe Playlist possui string de nome e uma Lista Ligada de ponteiros de Música.
+ * Um objeto da classe Playlist possui string de nome e uma Lista de ponteiros de Musica.
 */
 class Playlist
 {
 
 private:
     std::string nome; /*!< String referente ao título da Playlist.*/;
-    Lista<Musica *> musicas; /*!< A Lista Ligada de ponteiros de Música da Playlist.*/;
+    Lista<Musica *> musicas; /*!< A Lista de ponteiros de Musica da Playlist.*/;
 
 public:
 
@@ -37,7 +37,7 @@ public:
     /*!
      * @brief Desconstrutor de Playlist.
      * 
-     * Remove todos os ponteiros de Música de uma Playlist.
+     * Remove todos os ponteiros de Musica de uma Playlist.
      */
     ~Playlist();
 
@@ -58,50 +58,50 @@ public:
     void setNome(std::string nome);
 
     /*!
-     * @brief Retorna Lista Ligada de ponteiros de Música da Playlist.
+     * @brief Retorna Lista de ponteiros de Musica da Playlist.
      * 
-     * Busca e retorna a Lista Ligada de ponteiros de Música da Playlist.
-     * @return A Lista Ligada de ponteiros de Música da Playlist.
+     * Busca e retorna a Lista de ponteiros de Musica da Playlist.
+     * @return A Lista de ponteiros de Musica da Playlist.
      */
     Lista<Musica *> getMusicas();
 
     /*!
-     * @brief Salva a Lista Ligada de ponteiros de Música da Playlist.
+     * @brief Salva a Lista de ponteiros de Musica da Playlist.
      * 
-     * Recebe e salva uma Lista Ligada como a nova Lista Ligada de ponteiros de Música da Playlist.
-     * @param musicas Um ponteiro de uma Lista Ligada de ponteiros de Música Playlist.
+     * Recebe e salva uma Lista como a nova Lista de ponteiros de Musica da Playlist.
+     * @param musicas Um ponteiro de uma Lista de ponteiros de Musica Playlist.
      */
     void setMusicas(Lista<Musica *>* musicas);
 
     /*!
-     * @brief Criação e inserção de Música.
+     * @brief Criação e inserção de Musica.
      * 
-     * Recebe strings capazes de criar uma Música e salva a Música criada na Lista Ligada de ponteiros de Música da Playlist.
-     * @param titulo Um título de uma Música.
-     * @param artista Um nome de artista de uma Música.
+     * Recebe strings capazes de criar uma Musica e salva a Musica criada na Lista de ponteiros de Musica da Playlist.
+     * @param titulo Um título de uma Musica.
+     * @param artista Um nome de artista de uma Musica.
      */
     void add_musica(std::string titulo, std::string artista);
 
     /*!
-     * @brief Remoção de Música.
+     * @brief Remoção de Musica.
      * 
-     * Recebe string capazes de identificar uma Música que será removida da Lista Ligada de ponteiros de Música da Playlist.
-     * @param nome_musica Um título de uma Música.
+     * Recebe string capazes de identificar uma Musica que será removida da Lista de ponteiros de Musica da Playlist.
+     * @param nome_musica Um título de uma Musica.
      */
     void rem_musica(std::string nome_musica);
 
     /*!
-     * @brief Inserção de Músicas.
+     * @brief Inserção de Musica's.
      * 
-     * Recebe um endereço de Playlist e salva os elementos da Lista Ligada dela na Lista Ligada da Playlist.
+     * Recebe um endereço de Playlist e salva os elementos da Lista dela na Lista da Playlist.
      * @param p Um endereço de Playlist.
      */
     void add_musicas(Playlist& p);
 
     /*!
-     * @brief Remoção de Músicas.
+     * @brief Remoção de Musica's.
      * 
-     * Recebe um endereço de Playlist e remove os elementos da Lista Ligada da Playlist compatíveis aos da Lista Ligada da Playlist recebida.
+     * Recebe um endereço de Playlist e remove os elementos da Lista da Playlist compatíveis aos da Lista da Playlist recebida.
      * @param p Um endereço de Playlist.
      */
     void rem_musicas(Playlist& p);
@@ -109,59 +109,59 @@ public:
     /*!
      * @brief Impressão de Playlist.
      * 
-     * Imprime todos os elementos da Lista Ligada da Playlist.
+     * Imprime todos os elementos da Lista da Playlist.
      */
     void print_musics();
 
     /*!
-     * @brief Soma de Playlists.
+     * @brief Soma de Playlist's.
      * 
-     * Retorna a Lista Ligada que representa a união das Listas de duas Playlists.
+     * Retorna a Lista que representa a união das Lista's de duas Playlist's.
      * @param p1 Um endereço de uma Playlist.
-     * @return Um ponteiro de uma Lista Ligada de ponteiros de Música.
+     * @return Um ponteiro de uma Lista de ponteiros de Musica.
      */
     Lista<Musica *>* operator+(Playlist& p1);
 
     /*!
-     * @brief Soma Playlist com Música.
+     * @brief Soma Playlist com Musica.
      * 
-     * Retorna a Playlist resultante da inserção da Música recebida na Lista Ligada da Playlist.
-     * @param m Um ponteiro de uma Música.
+     * Retorna a Playlist resultante da inserção da Musica recebida na Lista da Playlist.
+     * @param m Um ponteiro de uma Musica.
      * @return Uma Playlist.
      */
     Playlist operator+(Musica* m);
 
     /*!
-     * @brief Subtração de Playlists.
+     * @brief Subtração de Playlist's.
      * 
-     * Retorna a Lista Ligada que representa a diferença das Listas de duas Playlists.
+     * Retorna a Lista que representa a diferença das Lista's de duas Playlist's.
      * @param p1 Um endereço de uma Playlist.
-     * @return Uma Lista Ligada de ponteiros de Música.
+     * @return Uma Lista de ponteiros de Musica.
      */
     Lista<Musica *> operator-(Playlist& p1);
 
     /*!
-     * @brief Subtrai Música de uma Playlist.
+     * @brief Subtrai Musica de uma Playlist.
      * 
-     * Retorna a Playlist resultante da remoção da Música recebida na Lista Ligada da Playlist.
-     * @param m Um endereço de uma Música.
+     * Retorna a Playlist resultante da remoção da Musica recebida na Lista da Playlist.
+     * @param m Um endereço de uma Musica.
      * @return Uma Playlist.
      */
     Playlist operator-(Musica& m);
 
     /*!
-     * @brief Extração de Música.
+     * @brief Extração de Musica.
      * 
-     * Remove e copia a última Música da Lista Ligada da Playlist, salvando-a como a Música recebida.
-     * @param m Um endereço de uma Música.
+     * Remove e copia a última Musica da Lista da Playlist, salvando-a como a Musica recebida.
+     * @param m Um endereço de uma Musica.
      */
     void operator>>(Musica* m);
 
     /*!
-     * @brief Inserção de Música.
+     * @brief Inserção de Musica.
      * 
-     * Recebe uma Música e a insere na Lista Ligada da Playlist, se possível.
-     * @param m Um ponteiro de uma Música.
+     * Recebe uma Musica e a insere na Lista da Playlist, se possível.
+     * @param m Um ponteiro de uma Musica.
      */
     void operator<<(Musica* m);
 };

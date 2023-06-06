@@ -4,9 +4,9 @@
 #include "Playlist.h"
 
 /*!
- * @brief Gerenciamento de Músicas.
+ * @brief Gerenciamento de Musica.
  * 
- * Abre o menú de gerenciamento de músicas.
+ * Abre o menú de gerenciamento de Musica.
  * @param musics Um endereço de Lista Ligada de ponteiros de Musica.
 */
 void manageMusics(Lista<Musica *>& musics);
@@ -23,7 +23,7 @@ void managePlaylist(Lista<Playlist *>& playlists);
  * @brief Gerenciamento de Playlist.
  * 
  * Abre o menú de gerenciamento de uma Playlist específica.
- * @param p Um endereço Playlist.
+ * @param p Um endereço de uma Playlist.
 */
 void editPlaylist(Playlist& p);
 

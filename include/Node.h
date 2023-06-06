@@ -4,23 +4,23 @@
 #include <iostream>
 
 /*!
- *@brief Classe de Nó.
+ *@brief Classe de Node.
  *
- * Um Nó faz parte de uma estrutura de dados onde cada Nó aponta para um endereço de memória e recebe um valor.
+ * Um Node faz parte de uma estrutura de dados onde cada Node aponta para um endereço de memória e recebe um valor.
 */
 template <typename T>
 
 class Node
 {
 public:
-    T dado; /*!< Um valor genérico armazenado no Nó.*/
-    Node *proximo; /*!< O endereço do próximo Nó armazenado num Nó.*/
+    T dado; /*!< Um valor genérico armazenado no Node.*/
+    Node *proximo; /*!< O endereço do próximo Node armazenado num Node.*/
 
     /*!
-     * @brief Construtor de Nó.
+     * @brief Construtor de Node.
      * 
-     * Cria um Nó a partir de um dado com endereço de próximo sendo nulo.
-     * @param T Um valor de genérico
+     * Cria um Node a partir de um dado com endereço de próximo sendo nulo.
+     * @param dado Um valor de genérico
      */
     Node(T dado)
     {
@@ -29,9 +29,9 @@ public:
     }
 
     /*!
-     * @brief Desconstrutor de Nó.
+     * @brief Desconstrutor de Node.
      * 
-     * Delete o endereço do Nó armazenado.
+     * Delete o endereço do Node armazenado.
      */
     ~Node()
     {

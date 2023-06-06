@@ -5,23 +5,23 @@
 #include <iostream>
 
 /*!
- *@brief Classe de Lista Ligada.
+ *@brief Classe de Lista.
  *
- * Uma Lista Ligada é uma estrutura de dados que organiza Nós em uma fila onde cada Nó aponta para um endereço de memória.
+ * Uma Lista é uma estrutura de dados que organiza Node em uma fila onde cada Node aponta para um endereço de memória.
 */
 template <typename T>
 
 class Lista
 {
 public:
-    Node<T> *cabeca; /*!< O primeiro Nó de uma Lista Ligada.*/
-    Node<T> *cauda; /*!< O último Nó de uma Lista Ligada.*/
-    int tamanho; /*!< Tamanho da Lista Ligada.*/
+    Node<T> *cabeca; /*!< O primeiro Node de uma Lista.*/
+    Node<T> *cauda; /*!< O último Node de uma Lista.*/
+    int tamanho; /*!< Tamanho da Lista.*/
 
     /*!
-     * @brief Construtor de Lista Ligada.
+     * @brief Construtor de Lista.
      * 
-     * Cria uma Lista Ligada vazia e de tamanho 0.
+     * Cria uma Lista vazia e de tamanho 0.
      */
     Lista()
     {
@@ -31,11 +31,11 @@ public:
     }
 
     /*!
-     * @brief Construtor Cópia de Lista Ligada.
+     * @brief Construtor Cópia de Lista.
      * 
-     * Cria uma Lista Ligada a partir de outra Lista Ligada.
+     * Cria uma Lista a partir de outra Lista.
      * 
-     * @param l Um ponteiro de uma Lista Ligada que deseja-se copiar.
+     * @param l Um ponteiro de uma Lista que deseja-se copiar.
      */
     Lista(Lista *l)
     {
@@ -46,9 +46,9 @@ public:
     }
 
     /*!
-     * @brief Desconstrutor de Lista Ligada.
+     * @brief Desconstrutor de Lista.
      * 
-     * Remove os Nós de uma Lista Ligada até o tamanho dela ser 0.
+     * Remove os Node de uma Lista até o tamanho dela ser 0.
      */
     ~Lista()
     {
@@ -56,11 +56,11 @@ public:
     }
 
     /*!
-     * @brief Inserção de Nó.
+     * @brief Inserção de Node.
      * 
-     * Cria e insere um Nó genério numa Lista Ligada de Nós genéricos.
+     * Cria e insere um Node genério numa Lista de Node genéricos.
      * 
-     * @param T Um valor genérico.
+     * @param valor Um valor genérico.
      */
     void inserir(T valor)
     {
@@ -80,12 +80,12 @@ public:
     }
 
     /*!
-     * @brief Busca de Nós.
+     * @brief Busca de Node.
      * 
-     * Percorre a Lista Ligada a procura de um Nó específico.
+     * Percorre a Lista a procura de um Node específico.
      * 
-     * @param n Um inteiro que representa o índice do Nó desejado.
-     * @return O ponteiro do endereço do Nó desejado.
+     * @param n Um inteiro que representa o índice do Node desejado.
+     * @return O ponteiro do endereço do Node desejado.
      */
     Node<T> *busca(int n)
     {
@@ -104,11 +104,11 @@ public:
     }
 
     /*!
-     * @brief Remoção de Nó específico.
+     * @brief Remoção de Node específico.
      * 
-     * Remove um Nó específico de uma Lista Ligada.
+     * Remove um Node específico de uma Lista.
      * 
-     * @param n Um inteiro que representa o índice do Nó que deseja-se remover.
+     * @param indice Um inteiro que representa o índice do Node que deseja-se remover.
      */
     void remover(int indice)
     {
@@ -132,9 +132,9 @@ public:
     }
 
     /*!
-     * @brief Remoção de Nós indiscrimanatória.
+     * @brief Remoção de Node indiscrimanatória.
      * 
-     * Remove todos os Nós de uma Lista Ligada.
+     * Remove todos os Node de uma Lista.
      */
     void remove_nos()
     {
@@ -145,10 +145,10 @@ public:
     }
 
     /*!
-     * @brief Adição de Nós.
+     * @brief Adição de Node.
      * 
-     * Concatena uma Lista Ligada nova na Lista Ligada original.
-     * @param l Um endereço de uma Lista Ligada de tipo genérico.
+     * Concatena uma Lista nova na Lista original.
+     * @param l Um endereço de uma Lista de tipo genérico.
      */
     void add_nos(Lista<T>& l)
     {
@@ -159,10 +159,10 @@ public:
     }
 
     /*!
-     * @brief Remoção de Nós discriminatória.
+     * @brief Remoção de Node discriminatória.
      * 
-     * Remove todos os Nós de uma Lista Ligada que são compatíveis aos que estão noutra Lista Ligada.
-     * @param l Um endereço de uma Lista Ligada de tipo genérico.
+     * Remove todos os Node de uma Lista que são compatíveis aos que estão noutra Lista.
+     * @param l Um endereço de uma Lista de tipo genérico.
      */
     void rem_nos(Lista<T>& l)
     {
@@ -180,11 +180,11 @@ public:
     }
 
     /*!
-     * @brief Cria Lista Ligada a partir de outras duas.
+     * @brief Cria Lista a partir de outras duas.
      * 
-     * Criação de Lista Ligada que representa união entre duas Listas.
-     * @param l Um endereço de uma Lista Ligada de tipo genérico.
-     * @return A Lista ligada que une os elementos de duas Listas numa só.
+     * Criação de Lista que representa união entre duas Listas.
+     * @param l1 Um endereço de uma Lista de tipo genérico.
+     * @return A Lista que une os elementos de duas Listas numa só.
      */
     Lista operator+(Lista<T>& l1)
     {
@@ -196,8 +196,8 @@ public:
     /*!
      * @brief Extração de Cauda.
      * 
-     * Copia o Nó da cauda da Lista Ligada e salva no Nó recebido por parâmetro, caso a Lista Ligada esteja vazia, salva nullptr no Nó recebido.
-     * @param no Um endereço de Nó de tipo genérico.
+     * Copia o Node da cauda da Lista e salva no Node recebido por parâmetro, caso a Lista esteja vazia, salva nullptr no Node recebido.
+     * @param no Um endereço de Node de tipo genérico.
      */
     void operator>>(Node<T>& no)
     {
@@ -213,10 +213,10 @@ public:
     }
 
     /*!
-     * @brief Inserção de Nó condicional.
+     * @brief Inserção de Node condicional.
      * 
-     * Caso o Nó recebido não seja nullptr, insere o Nó recebido por parâmetro no fim da Lista Ligada.
-     * @param no Um endereço de Nó de tipo genérico.
+     * Caso o Node recebido não seja nullptr, insere o Node recebido por parâmetro no fim da Lista.
+     * @param no Um endereço de Node de tipo genérico.
      */
     void operator<<(Node<T>& no)
     {
